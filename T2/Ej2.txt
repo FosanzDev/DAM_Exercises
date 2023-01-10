@@ -1,0 +1,27 @@
+a --> NO // No puede contener espacios
+
+b --> NO // No cumple con el convenio Upper CamelCase
+
+c --> SI // Puede usarse como nombre de variable
+
+d --> NO // No puede empezar con un número
+
+e --> SI // Puede usarse como nombre de variable
+
+f --> NO // No puede contener espacios
+
+g --> SI // Puede usarse como nombre de clase
+
+h --> NO // No se pueden usar los operadores en los nombres 
+
+i --> NO // No puede comenzar con un caracter especial
+
+j --> NO // No puede contener %
+
+k --> SI // Puede usarse como nombre de variable
+
+l --> SI // Puede usarse como nombre de variable
+
+m --> SI // Puede usarse como nombre de variable
+
+n --> SI // Puede usarse como nombre de variable

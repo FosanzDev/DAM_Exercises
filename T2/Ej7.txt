@@ -1,0 +1,15 @@
+a) NO --> No corresponde con una asignación
+b) NO --> PEDRO no está entre comillas o definido como una variable
+c) SI --> La asignación compilaría pero no cumple el espaciado
+d) SI 
+e) NO --> k no está definida como ninguna variable
+f) SI
+g) NO --> X no está definida como ninguna variable
+h) NO --> nota2 no está definida como ninguna variable
+i) NO --> No corresponde con una asignación
+j) SI
+k) NO --> Las comillas simples solo permiten inserción de caracteres
+l) SI
+m) SI
+n) NO --> El casting es incorrecto
+o) NO --> El casting es incorrecto
