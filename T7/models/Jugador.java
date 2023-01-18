@@ -1,3 +1,4 @@
+package models;
 public class Jugador {
     private int idJugador;
     private String nombre;
