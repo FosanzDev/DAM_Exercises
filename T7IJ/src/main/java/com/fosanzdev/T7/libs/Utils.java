@@ -569,7 +569,7 @@ public class Utils {
      * @return String with the validated date
      */
     public static String readDate(String msj) {
-        return readDate(msj, "yyyy/mm/dd");
+        return readDate(msj, "dd/MM/yyyy");
     }
 
     /**
