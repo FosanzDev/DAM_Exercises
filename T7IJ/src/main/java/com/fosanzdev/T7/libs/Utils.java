@@ -1,21 +1,26 @@
-package t6lib;
+package com.fosanzdev.T7.libs;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Utils {
 
     public static Scanner lector = new Scanner(System.in);
-    private static String vowels = "ÁÀÂÄÉÈËÊÍÌÏÎÓÒÔÖÚÙÜÛ";
-    private static String normalv = "AEIOU";
+    private static final String vowels = "ÁÀÂÄÉÈËÊÍÌÏÎÓÒÔÖÚÙÜÛ";
+    private static final String normalv = "AEIOU";
 
     /**
      * Deploys an error on System.err and prints n args, then breaks the program
-     * 
+     *
      * @param args Strings to be printed
      */
-    public static void deployError(String... args) { 
+    public static void deployError(String... args) {
         for (String s : args)
             System.err.println(s);
 
@@ -23,18 +28,18 @@ public class Utils {
     }
 
     /**
-     * Receives an string and prints the number of vowels and consonants
+     * Receives a string and prints the number of vowels and consonants
      * <p>
      * Example:
      * <blockquote>
-     * 
+     *
      * <pre>
      * count("Hola buenas")
      * // 5 vowels, 5 consonants
      * </pre>
-     * 
+     *
      * </blockquote>
-     * 
+     *
      * @param s String to be analized
      */
     public static void count(String s) {
@@ -49,7 +54,7 @@ public class Utils {
                 counter++;
         }
 
-        // Number of consonants = string length without spaces- number of vowels
+        // Number of consonants = string length without spaces - number of vowels
         System.out.print(counter + " vocales");
         System.out.println(" y " + (s.replaceAll("\\s+", "").length() - counter) + " consonantes");
     }
@@ -59,14 +64,14 @@ public class Utils {
      * <p>
      * Example:
      * <blockquote>
-     * 
+     *
      * <pre>
      * int n = countWords("Hola buenos dias");
      * // n = 3
      * </pre>
-     * 
+     *
      * </blockquote>
-     * 
+     *
      * @param s String with the words to be counted
      * @return Integer with the number of words
      */
@@ -95,14 +100,14 @@ public class Utils {
      * <p>
      * Example:
      * <blockquote>
-     * 
+     *
      * <pre>
      * String[] words = separateWords("Hola buenos dias")
      * //      words = ["Hola", "buenos", "dias"]
      * </pre>
-     * 
+     *
      * </blockquote>
-     * 
+     *
      * @param phrase String with the phrase
      * @return String array with the words
      */
@@ -115,14 +120,14 @@ public class Utils {
      * <p>
      * Example:
      * <blockquote>
-     * 
+     *
      * <pre>
      * String s = getMaxLength("Hola", "Buenos", "Dias")
      * //    s = "Buenos"
      * </pre>
-     * 
+     *
      * </blockquote>
-     * 
+     *
      * @param args Undefinied number of Strings or an array
      * @return String with the longest word
      */
@@ -147,14 +152,14 @@ public class Utils {
      * <p>
      * Example:
      * <blockquote>
-     * 
+     *
      * <pre>
      * String s = multiplyString("hola", 3)
      * //    s = "holaholahola"
      * </pre>
-     * 
+     *
      * </blockquote>
-     * 
+     *
      * @param s     String to be multiplied
      * @param times N times that s will be multiplied
      * @return String with the multiplied String
@@ -170,7 +175,7 @@ public class Utils {
 
     /**
      * Removes whitespaces and scape characters of a string
-     * 
+     *
      * @param text String to be cleaned
      * @return The clean String
      */
@@ -190,7 +195,7 @@ public class Utils {
     /**
      * Checks wether a String is palindrome or not (Ignores whitespaces and scape
      * characters)
-     * 
+     *
      * @param text String with the text to be analized
      * @return Boolean with the response
      */
@@ -220,9 +225,9 @@ public class Utils {
     }
 
     /**
-     * Gets q alphanumeric number of chars over an String and saves it into a char
+     * Gets q alphanumeric number of chars over a String and saves it into a char
      * Array
-     * 
+     *
      * @param s String with the alphanumeric characters
      * @param q Number of chars to be
      * @return char Array length q
@@ -244,7 +249,7 @@ public class Utils {
 
     /**
      * Reads and validates a double
-     * 
+     *
      * @param msj String to be printed
      * @return Validated double
      */
@@ -276,7 +281,7 @@ public class Utils {
      * length
      * equal to the min length of the two given arrays with the result of adding
      * values of the string by its index
-     * 
+     *
      * @param a1 integer array one
      * @param a2 integer array two
      * @return integer array with the result of the additions
@@ -297,7 +302,7 @@ public class Utils {
      * length
      * equal to the min length of the two given arrays, with the result of the
      * division from both arrays by its index
-     * 
+     *
      * @param a1 integer array with the dividends
      * @param a2 integer array with the divisors
      * @return double array with the result of the divisions
@@ -315,7 +320,7 @@ public class Utils {
 
     /**
      * Reads an integer with a personalized message
-     * 
+     *
      * @param msj String with the message
      * @return Validated integer
      */
@@ -357,7 +362,7 @@ public class Utils {
         int[] res = new int[len];
 
         for (int i = 0; i < len; i++)
-            res[i] = gen.nextInt(limit+1);
+            res[i] = gen.nextInt(limit + 1);
 
         return res;
     }
@@ -372,6 +377,212 @@ public class Utils {
         res[arr.length - 1] = arr[0];
 
         return res;
+    }
+
+    /**
+     * Prints a menu with personalized title, footer and initial sequence per element given.
+     * <p>
+     * If the initial sequence includes a {@code "."}, an autoincremental index will be added before the {@code "."}.
+     * <p>
+     * Footer lenght equals the title columns. If footer ==  {@code " "}, footer won't be printed.
+     * <p>
+     * Examples:
+     * <blockquote><pre>
+     * deployMenu("Example menu", " ", "--> ", "Opt1", "Opt2");
+     *  //******************
+     *  //** Example menu **
+     *  //******************
+     *  // --> Opt1
+     *  // --> Opt2
+     *
+     * deployMenu("Example menu with id", "Footer!", "--> . ", "Opt1", "Opt2");
+     *  //**************************
+     *  //** Example menu with id **
+     *  //**************************
+     *  // --> 1. Opt1
+     *  // --> 2. Opt2
+     *  //--------------------------
+     *  // Footer!
+     *  </pre></blockquote>
+     *
+     * @param title  String with the title
+     * @param footer String with the footer
+     * @param init   String with the starting sequence.
+     * @param args   Receives an undefinied number of Strings or a String array ({@code String[]})
+     */
+    public static void deployMenu(String title, String footer, String init, String... args) {
+        int idx = 1;
+        String titleMod = new StringBuilder("*".repeat(title.length() + 6)
+                + "\n** " + title + " **\n"
+                + "*".repeat(title.length() + 6)).toString();
+
+        System.out.println(titleMod);
+
+        if (init.contains(".")) {
+
+            for (String arg : args) {
+                String initMod = init.replace(".", idx + ".");
+                System.out.println(initMod + arg);
+                idx++;
+            }
+        } else {
+            for (String arg : args) {
+                System.out.println(init + arg);
+            }
+        }
+
+        if (footer.equals(" ") || footer.equals(""))
+            return;
+
+        else {
+            System.out.println("-".repeat(title.length() + 6));
+            System.out.println(footer);
+        }
+    }
+
+    /**
+     * Reads an integer with a personalized message
+     *
+     * @param msj String with the message
+     * @return Validated integer
+     */
+    public static int readInt(String msj) {
+        int res = 0;
+        boolean valid;
+
+        do {
+            System.out.print(msj);
+            valid = true;
+            try {
+                res = lector.nextInt();
+                lector.nextLine();
+            } catch (InputMismatchException e) {
+                lector.nextLine();
+                System.out.println("Invalid Entry");
+                valid = false;
+            }
+        } while (!valid);
+
+        return res;
+    }
+
+    /**
+     * Reads an integer with a limited number of digits with a personalized message
+     *
+     * @param msj String with the message
+     * @return integer with the validated input
+     */
+    public static int readLimitedInt(String msj, int limit) {
+        int res = 0;
+        boolean valid;
+
+        do {
+            System.out.print(msj);
+            valid = true;
+            try {
+                res = lector.nextInt();
+                lector.nextLine();
+                if (Integer.toString(res).length() != limit) {
+                    System.out.println("Invalid Entry");
+                    valid = false;
+                }
+            } catch (InputMismatchException e) {
+                lector.nextLine();
+                System.out.println("Invalid Entry");
+                valid = false;
+            }
+        } while (!valid);
+
+        return res;
+    }
+
+    /**
+     * Reads a String with a personalized message
+     *
+     * @param msj String with the message
+     */
+    public static String readString(String msj) {
+        System.out.print(msj);
+        return lector.nextLine();
+    }
+
+    /**
+     * Reads and returns a true/false user statement
+     *
+     * @param msj Personalized request message
+     * @return boolean with the user selection
+     */
+    public static boolean readOption(String msj) {
+        System.out.print(msj);
+        return lector.nextLine().charAt(0) == 'y';
+    }
+
+
+    /**
+     * Reads a date with a personalized message and format
+     * SimpleDateFormat is used to parse the date
+     * if no format is given, the default format is dd/MM/yyyy
+     *
+     * @param msj    String with the message
+     * @param format String with the format
+     */
+    public static String readDate(String msj, String format) {
+        String res = "";
+        boolean valid;
+
+        do {
+            System.out.print(msj);
+            valid = true;
+
+            try {
+                //Requests the date
+                res = lector.nextLine();
+                //Creates the pattern from the format
+                String pat = dateToPattern(format, "/");
+                //Compile and compare with the date
+                Pattern pattern = Pattern.compile(pat);
+                Matcher m = pattern.matcher(res);
+
+                if (!m.matches()) {
+                    System.out.println("Invalid Entry");
+                    valid = false;
+                    continue;
+                }
+                SimpleDateFormat sdf = new SimpleDateFormat(format);
+                sdf.parse(res);
+
+            } catch (ParseException e) {
+                System.out.println("Invalid format");
+                valid = false;
+            }
+        } while (!valid);
+
+        return res;
+    }
+
+    /**
+     * Reads a date with a personalized message and format
+     * SimpleDateFormat is used to parse the date
+     * if no format is given, the default format is dd/MM/yyyy
+     *
+     * @param msj String with the message
+     * @return String with the validated date
+     */
+    public static String readDate(String msj) {
+        return readDate(msj, "yyyy/mm/dd");
+    }
+
+    /**
+     * Transforms a date format to a regular expression
+     * The returned string has the same separators as the format
+     *
+     * @param date      String with the date format
+     * @param separator String with the separator
+     * @return String with the regular expression
+     */
+    public static String dateToPattern(String date, String separator) {
+        String[] dateParts = date.split(separator);
+        return String.format("\\d{%d}%s\\d{%d}%s\\d{%d}", dateParts[0].length(), separator, dateParts[1].length(), separator, dateParts[2].length());
     }
 
 }

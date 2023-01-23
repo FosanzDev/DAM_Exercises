@@ -2,6 +2,7 @@ package com.fosanzdev.T7.Ej1;
 
 public class Coche {
 
+
     public enum TipoCoche {
         MINI, UTILITARIO, FAMILIAR, DEPORTIVO
     }
