@@ -1,7 +1,8 @@
 package com.fosanzdev.T7.Ej4;
 
 public class Ej4 {
-    public static void main(String[] args) {
+
+    public Ej4() {
         Punto p1 = new Punto(1, 2);
         Punto p2 = new Punto(3, 4);
 
