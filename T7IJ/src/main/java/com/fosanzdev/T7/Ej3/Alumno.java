@@ -7,16 +7,25 @@ public class Alumno {
     private String nombre;
     private String apellidos;
     private String fechaNacimiento;
-    private String grupo;
+    private Grupo grupo;
     private String telefono;
 
-    public Alumno(int nia, String nombre, String apellidos, String fechaNacimiento, String grupo, String telefono) {
+    public Alumno(int nia, String nombre, String apellidos, String fechaNacimiento, Grupo grupo, String telefono) {
         this.nia = nia;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.fechaNacimiento = fechaNacimiento;
         this.grupo = grupo;
         this.telefono = telefono;
+    }
+
+    public Alumno(Alumno alumno) {
+        this.nia = alumno.getNia();
+        this.nombre = alumno.getNombre();
+        this.apellidos = alumno.getApellidos();
+        this.fechaNacimiento = alumno.getFechaNacimiento();
+        this.grupo = alumno.getGrupo();
+        this.telefono = alumno.getTelefono();
     }
 
     public int getNia() {
@@ -35,7 +44,7 @@ public class Alumno {
         return fechaNacimiento;
     }
 
-    public String getGrupo() {
+    public Grupo getGrupo() {
         return grupo;
     }
 

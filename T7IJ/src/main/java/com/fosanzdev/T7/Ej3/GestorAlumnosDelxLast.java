@@ -21,7 +21,7 @@ public class GestorAlumnosDelxLast {
         return numAlumnos;
     }
 
-    public void nuevoAlumno(int nia, String nombre, String apellidos, String fechaNacimiento, String grupo, String telefono) {
+    public void nuevoAlumno(int nia, String nombre, String apellidos, String fechaNacimiento, Grupo grupo, String telefono) {
         alumnos[count] = new Alumno(nia, nombre, apellidos, fechaNacimiento, grupo, telefono);
 
         count++;

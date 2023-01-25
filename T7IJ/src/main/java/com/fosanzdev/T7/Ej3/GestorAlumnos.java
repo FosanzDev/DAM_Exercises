@@ -8,6 +8,12 @@ import java.util.ArrayList;
 public class GestorAlumnos {
     private final int numAlumnos;
     private Alumno[] alumnos;
+    public Grupo[] grupos = {
+            new Grupo("1º DAM"),
+            new Grupo("2º DAM"),
+            new Grupo("1º ASIR"),
+            new Grupo("2º ASIR")
+    };
 
 
     public GestorAlumnos(int numAlumnos) {
@@ -20,7 +26,7 @@ public class GestorAlumnos {
         return numAlumnos;
     }
 
-    public void nuevoAlumno(int nia, String nombre, String apellidos, String fechaNacimiento, String grupo, String telefono) {
+    public void nuevoAlumno(int nia, String nombre, String apellidos, String fechaNacimiento, Grupo grupo, String telefono) {
 
         for (int i = 0; i < alumnos.length; i++) {
             if (alumnos[i] == null) {
@@ -77,7 +83,7 @@ public class GestorAlumnos {
         for (Alumno alumno : alumnos) {
 
             if (alumno != null && alumno.getGrupo().equals(grupo)) {
-                alumnosGrupo.add(alumno);
+                alumnosGrupo.add(new Alumno(alumno));
             }
         }
 
