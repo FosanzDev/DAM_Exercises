@@ -3,6 +3,7 @@ package com.fosanzdev.T7.Ej3;
 import com.fosanzdev.T7.Config;
 import com.fosanzdev.T7.libs.Utils;
 import com.github.javafaker.Faker;
+import com.fosanzgames.damresources.DAMUtils;
 
 import java.text.SimpleDateFormat;
 
