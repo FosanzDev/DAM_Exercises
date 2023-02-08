@@ -6,6 +6,9 @@ import com.fosanzdev.T7.Ej3.Ej3;
 import com.fosanzdev.T7.Ej4.Ej4;
 import com.fosanzdev.T7.Ej5.Ej5;
 import com.fosanzdev.T7.Ej6.Ej6;
+import com.fosanzdev.T7.Ej7.Ej7;
+import com.fosanzdev.T7.EjArrayList.EjArrayList;
+import com.fosanzdev.T7.EjArrayList.EjCola;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,7 +17,9 @@ public class Main {
         //Ej3 ej3 = new Ej3();
         //Ej4 ej4 = new Ej4();
         //Ej5 ej5 = new Ej5();
-        Ej6 ej6 = new Ej6();
-
+        //Ej6 ej6 = new Ej6();
+        //Ej7 ej7 = new Ej7();
+        //EjArrayList ejArrayList = new EjArrayList();
+        EjCola ejCola = new EjCola();
     }
 }

@@ -1,25 +1,17 @@
 package com.fosanzdev.T7.Ej7;
 
 public class Paciente {
-    private int SIP;
-    private String nombre;
-    private char sexo;
-    private int edad;
-    private String sintomatologia;
-    private String observaciones;
-    private String horaIngreso;
-    private String fechaIngreso;
+    private final int SIP;
+    private final String nombre;
+    private final char sexo;
+    private final int edad;
 
 
-    public Paciente(int SIP, String nombre, char sexo, int edad, String sintomatologia, String observaciones, String horaIngreso, String fechaIngreso) {
+    public Paciente(int SIP, String nombre, char sexo, int edad) {
         this.SIP = SIP;
         this.nombre = nombre;
         this.sexo = sexo;
         this.edad = edad;
-        this.sintomatologia = sintomatologia;
-        this.observaciones = observaciones;
-        this.horaIngreso = horaIngreso;
-        this.fechaIngreso = fechaIngreso;
     }
 
     public int getSIP() {
@@ -38,19 +30,9 @@ public class Paciente {
         return edad;
     }
 
-    public String getSintomatologia() {
-        return sintomatologia;
+    @Override
+    public String toString() {
+        return String.format("SIP: %d, Nombre: %s, Sexo: %c, Edad: %d", SIP, nombre, sexo, edad);
     }
 
-    public String getObservaciones() {
-        return observaciones;
-    }
-
-    public String getHoraIngreso() {
-        return horaIngreso;
-    }
-
-    public String getFechaIngreso() {
-        return fechaIngreso;
-    }
 }
