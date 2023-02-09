@@ -9,6 +9,7 @@ import com.fosanzdev.T7.Ej6.Ej6;
 import com.fosanzdev.T7.Ej7.Ej7;
 import com.fosanzdev.T7.EjArrayList.EjArrayList;
 import com.fosanzdev.T7.EjArrayList.EjCola;
+import com.fosanzdev.T7.EjArrayList.EjGenericStack;
 import com.fosanzdev.T7.EjArrayList.EjPila;
 
 public class Main {
@@ -22,6 +23,7 @@ public class Main {
         //Ej7 ej7 = new Ej7();
         //EjArrayList ejArrayList = new EjArrayList();
         //EjCola ejCola = new EjCola();
-        EjPila ejPila = new EjPila();
+        //EjPila ejPila = new EjPila();
+        EjGenericStack ejGenericStack = new EjGenericStack();
     }
 }
