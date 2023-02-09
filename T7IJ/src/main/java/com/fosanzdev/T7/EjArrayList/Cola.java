@@ -5,8 +5,8 @@ public class Cola {
     private static final int DEFAULT_SIZE = 100;
     private static final double DEFAULT_RESIZE = 2;
     private double[] cola;
-    private int addPointer;
-    private int dataPointer;
+    public int addPointer;
+    public int dataPointer;
 
     public Cola(int size) {
         cola = new double[size];
@@ -31,19 +31,21 @@ public class Cola {
         }
     }
 
-    public double peek() throws IndexOutOfBoundsException {
+    public double peek() throws NoNextItemException {
         if (dataPointer == addPointer) {
-            throw new IndexOutOfBoundsException("No hay datos en la cola");
+            throw new NoNextItemException();
+
         } else {
+            if (dataPointer == cola.length)
+                dataPointer = 0;
+
             return cola[dataPointer];
         }
     }
 
     public double next() {
         double value = peek();
-
-        dataPointer = dataPointer == cola.length ? 0 : dataPointer + 1;
-
+        dataPointer++;
         return value;
     }
 
