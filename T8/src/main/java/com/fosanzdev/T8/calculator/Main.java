@@ -1,16 +1,15 @@
-package com.fosanzdev.T8;
+package com.fosanzdev.T8.calculator;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class Main{
 
     public static void main(String[] args) {
 
-        final String[] textButtons = {"ON","OFF","CE","/","7","8","9","*","4","5","6","-","1","2","3","+","0",".","%","="};
+        final String[] textButtons = {"ON", "OFF", "CE", "/", "7", "8", "9", "*", "4", "5", "6", "-", "1", "2", "3", "+", "0", ".", "%", "="};
 
         //Creamos un objeto de la clase Display (JFrame)
         Display display = new Display("Mi ventana");
@@ -38,6 +37,14 @@ public class Main{
             @Override
             public void actionPerformed(ActionEvent e) {
                 JButton button = (JButton) e.getSource();
+
+                char textButton;
+                switch (button.getText()) {
+                    case "ON" -> textButton = 'o';
+                    case "OFF" -> textButton = 'f';
+                    case "CE" -> textButton = 'c';
+                    default -> textButton = button.getText().charAt(0);
+                }
                 label.setText(calculator.addSymbol(button.getText().charAt(0)));
             }
         };
@@ -47,12 +54,7 @@ public class Main{
         for(int i = 0;i<20;i++){
             JButton button = new JButton(textButtons[i]);
             panelsouth.add(button);
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-
-                }
-            });
+            button.addActionListener(listener);
         }
         panelnorth.add(label);
 

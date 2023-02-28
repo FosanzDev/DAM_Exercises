@@ -1,4 +1,4 @@
-package com.fosanzdev.T8;
+package com.fosanzdev.T8.calculator;
 
 import javax.swing.*;
 import java.awt.*;

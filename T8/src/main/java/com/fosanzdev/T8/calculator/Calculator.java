@@ -1,4 +1,4 @@
-package com.fosanzdev.T8;
+package com.fosanzdev.T8.calculator;
 
 public class Calculator {
 
@@ -25,10 +25,33 @@ public class Calculator {
 
     public void turnOff(){
         state = State.OFF;
+        buffer.setLength(0);
+    }
+
+    public String getDisplay(){
+        return buffer.toString();
     }
 
     public String addSymbol(char c){
+
+        if (c == 'c' && state != State.OFF){
+            buffer.setLength(0);
+            op1=0;
+            op2=0;
+            return getDisplay();
+        } else if (c == 'f') {
+            turnOff();
+            return getDisplay();
+        } else {
         switch(state) {
+
+            case OFF:
+                if (c == 'o'){
+                    reset();
+                }
+                break;
+
+
             case INIT:
                 if (Character.isDigit(c)) {
                     buffer.append(c);
@@ -88,12 +111,15 @@ public class Calculator {
                 } else if (c == '.'){
                     buffer.append("0.");
                     state = State.OP2_DECIMAL;
-                } else if (isOperator(c)){
+                } else if (isOperator(c) ){
                     parseOperation();
                     state = State.BEGIN_OP2;
                     operator = c;
-                } else if (isReset(c)){
+                } else if (isReset(c)) {
                     reset();
+                } else if (c == '='){
+                    parseOperation();
+                    state = State.INIT;
                 } else {
                     error();
                 }
@@ -117,24 +143,27 @@ public class Calculator {
                         reset();
                     }
                     break;
-        } return buffer.toString();
+            }
+        }
+        return buffer.toString();
+
     }
 
-    private void parseOperation(){
-        op2 = Double.parseDouble(buffer.toString());
-        switch (operator) {
-            case '+' -> op1 += op2;
-            case '-' -> op1 -= op2;
-            case '*' -> op1 *= op2;
-            case '/' -> {
-                if (op2 == 0) {
-                    error();
-                } else {
-                    op1 /= op2;
+    private void parseOperation() {
+            op2 = Double.parseDouble(buffer.toString());
+            switch (operator) {
+                case '+' -> op1 += op2;
+                case '-' -> op1 -= op2;
+                case '*' -> op1 *= op2;
+                case '/' -> {
+                    if (op2 == 0) {
+                        error();
+                    } else {
+                        op1 /= op2;
+                    }
                 }
+                case '%' -> op1 %= op2;
             }
-            case '%' -> op1 %= op2;
-        }
 
         buffer.append(op1);
     }
@@ -150,7 +179,7 @@ public class Calculator {
         state = State.ERROR;
     }
 
-    private void reset(){
+    void reset(){
         buffer.setLength(0);
         state = State.INIT;
     }
