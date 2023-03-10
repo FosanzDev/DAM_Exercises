@@ -23,4 +23,8 @@ public class Alumno {
     public String getNombre() {
         return nombre;
     }
+
+    public int getNia() {
+        return 0;
+    }
 }

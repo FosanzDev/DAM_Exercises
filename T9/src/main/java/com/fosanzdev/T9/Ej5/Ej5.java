@@ -12,7 +12,7 @@ public class Ej5 {
     public Ej5() {
 
         // Se piden los datos de los dos alumnos
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < alumnos.length; i++) {
             // Se declaran las variables
             String nombre;
             int edad;
