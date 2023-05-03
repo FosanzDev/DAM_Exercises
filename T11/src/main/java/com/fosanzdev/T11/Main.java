@@ -1,13 +1,11 @@
 package com.fosanzdev.T11;
 
- import com.fosanzdev.T11.Ej2.Ej2;
-import com.fosanzdev.T11.Ej4.Ej4;
- import com.fosanzdev.T11.Ej4.Electrodomestico;
+import com.fosanzdev.T11.Ej5.Ej5;
+import com.fosanzdev.T11.Ej5Adv.Ej5Adv;
 
 public class Main {
-
     public static void main(String[] args) {
-        // Ej2 ej2 = new Ej2();
-        Ej4 ej4 = new Ej4();
+        //Ej5 ej5 = new Ej5();
+        Ej5Adv ej5Adv = new Ej5Adv();
     }
 }
