@@ -3,12 +3,12 @@ package com.fosanzdev.T11.Ej7;
 import java.util.ArrayList;
 public class Estadio {
 
-    private String nombre;
-    private String direccion;
+    private final String nombre;
+    private final String direccion;
     private int aforo;
     private int aforoVIP;
     private ArrayList<Partido> partidos;
-    private ArrayList<Area> areas;
+    private final ArrayList<Area> areas;
 
     public Estadio(String nombre, String direccion, ArrayList<Area> areas) {
         this.nombre = nombre;
@@ -25,5 +25,26 @@ public class Estadio {
                 this.aforo += area.getAforo();
             }
         }
+    }
+
+    private void addPartido(Partido partido){
+        this.partidos.add(partido);
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public ArrayList<Area> getAreas() {
+        //Make a copy of each area of the arraylist
+        ArrayList<Area> areasCopy = new ArrayList<>();
+        for(Area area : this.areas){
+            areasCopy.add(new Area(area));
+        }
+        return areasCopy;
     }
 }
