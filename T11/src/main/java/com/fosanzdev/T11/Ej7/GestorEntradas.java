@@ -57,7 +57,7 @@ public class GestorEntradas {
     public ArrayList<Integer> getAforo(){
         ArrayList<Integer> aforo = new ArrayList<>();
         for(Area area : this.areas){
-            aforo.add(area.getAforo());
+            aforo.add(area.getAsientosPorFila() * area.getNumFilas());
         }
         return aforo;
     }

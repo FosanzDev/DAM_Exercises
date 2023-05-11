@@ -20,9 +20,9 @@ public class Estadio {
 
         for(Area area : areas){
             if(area.isVip()){
-                this.aforoVIP += area.getAforo();
+                this.aforoVIP += area.getAsientosPorFila() * area.getNumFilas();
             }else{
-                this.aforo += area.getAforo();
+                this.aforo += area.getAsientosPorFila() * area.getNumFilas();
             }
         }
     }

@@ -2,32 +2,48 @@ package com.fosanzdev.T11.Ej7;
 
 public class Area {
 
-    boolean vip;
-    int aforo;
-    String nombre;
+    private boolean vip;
+    private int numFilas;
+    private int asientosPorFila;
+    private String nombre;
+    private Fila[] filas;
 
-    public Area(boolean vip, int capacidad, String nombre) {
+    public Area(boolean vip, int numFilas, int asientosPorFila, String nombre){
         this.vip = vip;
-        this.aforo = capacidad;
         this.nombre = nombre;
+        this.numFilas = numFilas;
+        this.asientosPorFila = asientosPorFila;
+        this.filas = new Fila[numFilas];
+
+        for(int i = 0; i < numFilas; i++){
+            this.filas[i] = new Fila(i, asientosPorFila);
+        }
     }
 
-    //Making the copy constructor
     public Area(Area area){
-        this.vip = area.isVip();
-        this.aforo = area.getAforo();
+            this.vip = area.isVip();
         this.nombre = area.getNombre();
-    }
+        this.numFilas = area.getNumFilas();
+        this.asientosPorFila = area.getAsientosPorFila();
+        this.filas = new Fila[numFilas];
+
+        for(int i = 0; i < numFilas; i++){
+            this.filas[i] = new Fila(i, asientosPorFila);
+        } }
 
     public boolean isVip() {
         return vip;
     }
 
-    public int getAforo() {
-        return aforo;
+    public int getNumFilas() {
+        return numFilas;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getAsientosPorFila() {
+        return asientosPorFila;
+    }
+
+    public String getNombre(){
+        return this.nombre;
     }
 }
