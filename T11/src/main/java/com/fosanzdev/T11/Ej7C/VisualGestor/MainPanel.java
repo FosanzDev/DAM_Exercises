@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class MainPanel extends JFrame {
     private JPanel mainPanel;
-    private JButton button1;
+    private JButton infoEstadioButton;
     private JButton button3;
     private JButton button4;
     private JButton button6;

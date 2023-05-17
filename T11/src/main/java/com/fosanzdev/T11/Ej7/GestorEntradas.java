@@ -19,6 +19,8 @@ public class GestorEntradas {
         this.precioBase = precioBase;
         this.areas = estadio.getAreas();
         this.multVip = multVip;
+
+        //TODO: Sobra
         this.afBaja = afBaja;
         this.afMedia = afMedia;
         this.afAlta = afAlta;

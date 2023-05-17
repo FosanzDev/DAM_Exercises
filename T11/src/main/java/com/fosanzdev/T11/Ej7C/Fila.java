@@ -34,6 +34,9 @@ public class Fila {
 
     public void setVip(boolean vip) {
         this.vip = vip;
+        for (Asiento asiento : asientos) {
+            asiento.setVip(vip);
+        }
     }
 
     public Asiento[] getAsientos() {

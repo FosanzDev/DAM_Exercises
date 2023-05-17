@@ -51,4 +51,18 @@ public class Area {
     public int getNumAsientos() {
         return numAsientos;
     }
+
+    public void setOcupado(int numFila, int numAsiento){
+        Asiento asiento = filas[numFila].getAsientos()[numAsiento];
+        asiento.setOcupado(!asiento.isOcupado());
+    }
+
+    public void setFilasVip(int fila, boolean state){
+        filas[fila].setVip(state);
+    }
+
+    public void setAsientoVip(int numFila, int numAsiento){
+        Asiento asiento = filas[numFila].getAsientos()[numAsiento];
+        asiento.setVip(!asiento.isVip());
+    }
 }

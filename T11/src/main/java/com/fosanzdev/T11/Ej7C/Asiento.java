@@ -49,4 +49,8 @@ public class Asiento {
         return partidos.remove(partido);
     }
 
+    public void setVip(boolean vip) {
+        this.vip = vip;
+    }
+
 }
