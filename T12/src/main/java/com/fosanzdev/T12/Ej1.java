@@ -23,6 +23,6 @@ public class Ej1 {
         } else{
             System.out.println("El archivo no existe");
         }
-        
+
     }
 }
